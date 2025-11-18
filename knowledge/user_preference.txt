@@ -1,0 +1,5 @@
+Preferred Output Format: Markdown
+Security Level: Enterprise Grade
+Report Style: Technical + Executive Summary
+Default Target: Web Applications
+Language: Professional English

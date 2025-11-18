@@ -1,0 +1,62 @@
+threat_hunt_task:
+  description: "Conduct a comprehensive threat hunt to identify potential zero-day vulnerabilities in the system."
+  steps:
+    - "Gather and analyze system logs, network traffic, and application behavior for anomalies."
+    - "Utilize advanced threat hunting tools and techniques to detect hidden threats."
+    - "Document findings and prioritize identified vulnerabilities based on risk assessment."
+
+  Provide: vulnerability name, CVE ID, CVSS score, and potential impact analysis.
+  expected_output: |
+    Structured vulnerability report with:
+    - Top 3 critical vulnerabilities found
+    - CVSS scores and attack vectors
+    - Potential business impact
+    - Recommended priority level
+  agent: threat_hunter
+
+exploit_development_task:
+  description: "Develop and test proof-of-concept exploits for the identified zero-day vulnerabilities."
+  steps:
+    - "Select the top 3 critical vulnerabilities identified in the threat hunt."
+    - "Design and implement proof-of-concept exploits for each vulnerability."
+    - "Test the exploits in a controlled environment to validate their effectiveness."
+
+  Provide: exploit code, execution steps, and mitigation recommendations.
+  expected_output: |
+    Exploit development report with:
+    - Proof-of-concept exploit code for each vulnerability
+    - Step-by-step execution instructions
+    - Mitigation strategies to prevent exploitation
+  agent: exploit_developer
+  context: ["threat_hunt_task"]
+
+patch_development_task:
+  description: "Design and implement effective patches for the identified zero-day vulnerabilities."
+  steps:
+    - "Analyze the root cause of each identified vulnerability."
+    - "Develop patches that address the vulnerabilities without introducing new issues."
+    - "Conduct regression testing to ensure system stability post-patch."
+  Provide: patch code, deployment instructions, and testing results.
+  expected_output: |
+    Patch development report with:
+    - Patch code for each vulnerability
+    - Detailed deployment instructions
+    - Results from regression testing
+  agent: patch_engineer
+  context: [exploit_development_task]
+
+advisory_creation_task:
+  description: "Create comprehensive security advisories for the identified zero-day vulnerabilities."
+  steps:
+    - "Gather detailed information about each identified vulnerability, including technical details and potential impacts."
+    - "Draft clear and concise advisories tailored to different audiences, such as technical teams and executive leadership."
+    - "Review and finalize the advisories to ensure accuracy and clarity."
+
+  Provide: advisory documents, audience-specific summaries, and distribution plans.
+  expected_output: |
+    Security advisory package with:
+    - Detailed advisories for each vulnerability
+    - Executive summaries highlighting key risks and recommendations
+    - Distribution plan for stakeholders
+  agent: security_comms
+  context: ["patch_development_task"]
